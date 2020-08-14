@@ -6,6 +6,5 @@
     <fragment
         android:id="@+id/mainFragment"
         android:name="com.tphtwe.foodparadise.fragment.MainFragment"
-        android:label="MainFragment"
-        />
+        android:label="MainFragment" />
 </navigation>
