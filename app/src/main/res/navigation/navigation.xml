@@ -4,12 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigation"
     app:startDestination="@id/splashFragment">
-<<<<<<< HEAD
 
-    <fragment
-=======
 <fragment
->>>>>>> 35cbb4d6a9412770373b4ee32257ee5d8faf19d3
+
         android:id="@+id/splashFragment"
         android:name="com.tphtwe.foodparadise.fragment.SplashFragment"
         android:label="fragment_splash"
@@ -24,28 +21,16 @@
     <fragment
         android:id="@+id/mainFragment"
         android:name="com.tphtwe.foodparadise.fragment.MainFragment"
-
         android:label="fragment_main" >
         <action
             android:id="@+id/action_mainFragment_to_atoZFragment"
             app:destination="@id/atoZFragment" />
     </fragment>
-<<<<<<< HEAD
 
-
-    <fragment
-        android:id="@+id/mainFragment"
-        android:name="com.tphtwe.foodparadise.fragment.MainFragment"
-        android:label="fragment_main"
-        tools:layout="@layout/fragment_main" />
-
-
-=======
     <fragment
         android:id="@+id/atoZFragment"
         android:name="com.tphtwe.foodparadise.AtoZFragment"
         android:label="fragment_ato_z"
         tools:layout="@layout/fragment_ato_z" />
- 
->>>>>>> 35cbb4d6a9412770373b4ee32257ee5d8faf19d3
+
 </navigation>
