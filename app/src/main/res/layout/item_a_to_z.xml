@@ -20,7 +20,6 @@
                 android:id="@+id/firstLetterImg"
                 android:layout_width="150dp"
                 android:layout_height="140dp"
-
                 android:src="@drawable/hhh"
                 android:scaleType="centerCrop"/>
             <TextView
@@ -28,6 +27,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:text="Eton Mess"
+                android:maxLines="2"
                 android:textColor="@color/black"
                 android:textSize="13sp"
                 android:layout_gravity="center"
