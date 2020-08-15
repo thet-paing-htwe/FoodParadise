@@ -2,6 +2,7 @@ package com.tphtwe.foodparadise.api
 
 import com.tphtwe.foodparadise.model.AtoZmodel.FirstLetter
 import com.tphtwe.foodparadise.model.Category
+import com.tphtwe.foodparadise.model.Instrction.Instruction
 import com.tphtwe.foodparadise.model.Random
 import retrofit2.Call
 import retrofit2.Retrofit
@@ -26,4 +27,10 @@ class ApiClient {
     fun getFirstLetter(letter:String):Call<FirstLetter>{
         return apiInterface.getFirstLetter(letter)
     }
+
+    fun getDetail(id:String):Call<Instruction>{
+        return apiInterface.getDetil(id)
+    }
+
+
 }

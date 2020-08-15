@@ -2,6 +2,7 @@ package com.tphtwe.foodparadise.api
 
 import com.tphtwe.foodparadise.model.AtoZmodel.FirstLetter
 import com.tphtwe.foodparadise.model.Category
+import com.tphtwe.foodparadise.model.Instrction.Instruction
 import com.tphtwe.foodparadise.model.Random
 import retrofit2.Call
 import retrofit2.http.GET
@@ -18,5 +19,11 @@ interface ApiInterface {
     fun getFirstLetter(
         @Query("f")letter:String
     ):Call<FirstLetter>
+
+    @GET("lookup.php")
+    fun getDetil(
+        @Query("i") id:String
+    ):Call<Instruction>
+
 
 }
