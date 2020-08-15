@@ -20,8 +20,6 @@
         <action
             android:id="@+id/action_splashFragment_to_mainFragment"
             app:destination="@id/mainFragment"
-            app:popUpToInclusive="true"
-
             />
     </fragment>
 </navigation>
