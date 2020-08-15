@@ -3,12 +3,24 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigation"
-    app:startDestination="@id/mainFragment">
+    app:startDestination="@id/splashFragment">
+<fragment
+        android:id="@+id/splashFragment"
+        android:name="com.tphtwe.foodparadise.fragment.SplashFragment"
+        android:label="fragment_splash"
+        tools:layout="@layout/fragment_splash"
+        >
+        <action
+            android:id="@+id/action_splashFragment_to_mainFragment"
+            app:destination="@id/mainFragment"
+            />
+  </fragment>
 
     <fragment
         android:id="@+id/mainFragment"
         android:name="com.tphtwe.foodparadise.fragment.MainFragment"
-        android:label="MainFragment" >
+
+        android:label="fragment_main" >
         <action
             android:id="@+id/action_mainFragment_to_atoZFragment"
             app:destination="@id/atoZFragment" />
@@ -21,6 +33,7 @@
         android:name="com.tphtwe.foodparadise.AtoZFragment"
         android:label="fragment_ato_z"
         tools:layout="@layout/fragment_ato_z" />
+
     <fragment
         android:id="@+id/detailFragment"
         android:name="com.tphtwe.foodparadise.DetailFragment"
@@ -31,4 +44,5 @@
             app:argType="string"
             android:defaultValue="Hello" />
     </fragment>
+
 </navigation>
