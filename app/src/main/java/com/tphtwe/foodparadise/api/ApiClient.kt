@@ -1,5 +1,6 @@
 package com.tphtwe.foodparadise.api
 
+import com.tphtwe.foodparadise.model.AtoZmodel.FirstLetter
 import com.tphtwe.foodparadise.model.Category
 import com.tphtwe.foodparadise.model.Random
 import retrofit2.Call
@@ -19,5 +20,10 @@ class ApiClient {
     }
     fun getRandoms():Call<Random>{
         return apiInterface.getRandom()
+    }
+
+    //Ypp add firstletter
+    fun getFirstLetter(letter:String):Call<FirstLetter>{
+        return apiInterface.getFirstLetter(letter)
     }
 }

@@ -9,6 +9,7 @@ import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.observe
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.squareup.picasso.Picasso
 import com.tphtwe.foodparadise.R
@@ -52,7 +53,7 @@ class MainFragment : Fragment(), CategoryAdapter.ClickListener {
         }
         //letter atoz click Listener
         letterCard.setOnClickListener {
-            Toast.makeText(context, "nice", Toast.LENGTH_SHORT).show()
+            findNavController().navigate(R.id.action_mainFragment_to_atoZFragment)
         }
         //country click Listener
         countryCard.setOnClickListener {
