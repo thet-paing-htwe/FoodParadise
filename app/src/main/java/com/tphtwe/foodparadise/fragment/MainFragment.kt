@@ -57,11 +57,11 @@ class MainFragment : Fragment(), CategoryAdapter.ClickListener {
         }
         //country click Listener
         countryCard.setOnClickListener {
-            Toast.makeText(context, "excellent", Toast.LENGTH_SHORT).show()
+            findNavController().navigate(R.id.action_mainFragment_to_countryFragment)
         }
         //ingrediant click Listener
         ingredientCard.setOnClickListener {
-            Toast.makeText(context, "great job", Toast.LENGTH_SHORT).show()
+            findNavController().navigate(R.id.action_mainFragment_to_ingredientFilterFragment)
         }
 
 

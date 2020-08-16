@@ -25,6 +25,12 @@
         <action
             android:id="@+id/action_mainFragment_to_atoZFragment"
             app:destination="@id/atoZFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_countryFragment"
+            app:destination="@id/countryFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_ingredientFilterFragment"
+            app:destination="@id/ingredientFilterFragment" />
     </fragment>
 
     <fragment
@@ -32,5 +38,14 @@
         android:name="com.tphtwe.foodparadise.AtoZFragment"
         android:label="fragment_ato_z"
         tools:layout="@layout/fragment_ato_z" />
+    <fragment
+        android:id="@+id/countryFragment"
+        android:name="com.tphtwe.foodparadise.fragment.CountryFragment"
+        android:label="fragment_country"
+        tools:layout="@layout/fragment_country" />
+    <fragment
+        android:id="@+id/ingredientFilterFragment"
+        android:name="com.tphtwe.foodparadise.fragment.IngredientFilterFragment"
+        android:label="IngredientFilterFragment" />
 
 </navigation>

@@ -21,8 +21,8 @@ import retrofit2.Callback
 import retrofit2.Response
 
 
-class AtoZFragment : Fragment() {
-
+class AtoZFragment : Fragment() , FirstLetterAdaptor.ClickListener2{
+        lateinit var firstLetterAdaptor: FirstLetterAdaptor
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -34,6 +34,8 @@ class AtoZFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        firstLetterAdaptor= FirstLetterAdaptor()
+        firstLetterAdaptor.setOnclickListener(this)
 
         var listAto=AtoZList().arrayList
 
@@ -43,10 +45,7 @@ class AtoZFragment : Fragment() {
 
         spinner.onItemSelectedListener = object  : AdapterView.OnItemSelectedListener{
             override fun onNothingSelected(p0: AdapterView<*>?) {
-
-
             }
-
             override fun onItemSelected(p0: AdapterView<*>?, p1: View?, position: Int, p3: Long) {
 //                Toast.makeText(context, p0?.getItemAtPosition(position).toString(), Toast.LENGTH_SHORT).show()
                 var apiClient=ApiClient().getFirstLetter(p0?.getItemAtPosition(position).toString())
@@ -58,20 +57,20 @@ class AtoZFragment : Fragment() {
                     override fun onResponse(call: Call<FirstLetter>, response: Response<FirstLetter>) {
                         atozRecycler.apply {
                             layoutManager=GridLayoutManager(context,2)
-                            adapter=FirstLetterAdaptor(response.body()!!.meals)
+                            adapter=firstLetterAdaptor
                         }
+                        firstLetterAdaptor.updateMealLetter(response.body()!!.meals)
 
                     }
 
                 })
             }
-
-
-
         }
 
+    }
 
-
+    override fun click(meal: Meal) {
+        Toast.makeText(context, meal.strMeal, Toast.LENGTH_SHORT).show()
     }
 
 
