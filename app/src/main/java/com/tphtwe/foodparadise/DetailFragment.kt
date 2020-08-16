@@ -18,6 +18,7 @@ import com.tphtwe.foodparadise.model.Instrction.Meal
 import com.tphtwe.foodparadise.viewmodel.DetailViewMode
 import kotlinx.android.synthetic.main.fragment_desciption.*
 import kotlinx.android.synthetic.main.fragment_detail.*
+import kotlinx.android.synthetic.main.fragment_ingrediant_data.*
 import kotlinx.android.synthetic.main.fragment_youtube.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -63,6 +64,8 @@ class DetailFragment : Fragment() {
             transcation?.commit()
 
         }
+
+
         observedViewModel()
 
 
@@ -76,17 +79,21 @@ class DetailFragment : Fragment() {
                 Picasso.get().load(it.meals[0].strMealThumb).into(detilImg)
                 instrctionDetil.text=it.meals[0].strInstructions
                 var youtube=it.meals[0].strYoutube
-                
+                var id= it.meals[0].idMeal
 
                 btnIngre.setOnClickListener{
 
-                    var ingreFragment=IngreFragment()
+                    var ingreFragment=IngrediantDataFragment()
                     var bundle=Bundle()
-                    bundle.putStringArrayList("yy", arrayListOf("77","55"))
+                    bundle.putString("mm",id)
+                    ingreFragment.arguments=bundle
                     var transaction=activity?.supportFragmentManager?.beginTransaction()
                     transaction?.replace(R.id.detilFrame,ingreFragment)
                     transaction?.commit()
                 }
+
+
+
 
                 btnYoutube.setOnClickListener{
 
