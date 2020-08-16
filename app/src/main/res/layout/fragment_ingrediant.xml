@@ -3,18 +3,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
-    tools:context=".fragment.CategoFragment">
-    <TextView
-        android:id="@+id/catText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+    tools:context=".fragment.IngrediantFragment"
+    android:background="@color/white">
 
-
-
+    <!-- TODO: Update blank fragment layout -->
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/catFilterRecycler"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:id="@+id/ingrediantRecycler"
+        android:layout_height="wrap_content"/>
 
 </FrameLayout>

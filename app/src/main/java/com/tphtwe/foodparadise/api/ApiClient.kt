@@ -2,6 +2,7 @@ package com.tphtwe.foodparadise.api
 
 import com.tphtwe.foodparadise.model.AtoZmodel.FirstLetter
 import com.tphtwe.foodparadise.model.Category
+import com.tphtwe.foodparadise.model.CatogoryFilter.CategoryFilter
 import com.tphtwe.foodparadise.model.Instrction.Instruction
 import com.tphtwe.foodparadise.model.Random
 import retrofit2.Call
@@ -30,6 +31,10 @@ class ApiClient {
 
     fun getDetail(id:String):Call<Instruction>{
         return apiInterface.getDetil(id)
+    }
+
+    fun getCatogoryFilter(id: String):Call<CategoryFilter>{
+        return apiInterface.getCat(id)
     }
 
 

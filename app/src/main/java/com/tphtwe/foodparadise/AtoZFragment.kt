@@ -21,7 +21,8 @@ import retrofit2.Callback
 import retrofit2.Response
 
 
-class AtoZFragment : Fragment() {
+class AtoZFragment : Fragment(),FirstLetterAdaptor.ClickLister {
+   lateinit var firstLetterAdaptor: FirstLetterAdaptor
 
 
     override fun onCreateView(
@@ -36,10 +37,14 @@ class AtoZFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         var listAto=AtoZList().arrayList
+        firstLetterAdaptor= FirstLetterAdaptor()
+
+
 
 
         val arrayAdapter= ArrayAdapter<String>(this.requireContext(), R.layout.support_simple_spinner_dropdown_item, listAto)
         spinner.adapter=arrayAdapter
+
 
         spinner.onItemSelectedListener = object  : AdapterView.OnItemSelectedListener{
             override fun onNothingSelected(p0: AdapterView<*>?) {
@@ -59,7 +64,9 @@ class AtoZFragment : Fragment() {
                         atozRecycler.apply {
                             layoutManager=GridLayoutManager(context,2)
                             adapter=FirstLetterAdaptor(response.body()!!.meals)
+
                         }
+
 
                     }
 
@@ -72,6 +79,10 @@ class AtoZFragment : Fragment() {
 
 
 
+    }
+
+    override fun click(meal: Meal) {
+        Toast.makeText(context, "Hhh", Toast.LENGTH_SHORT).show()
     }
 
 

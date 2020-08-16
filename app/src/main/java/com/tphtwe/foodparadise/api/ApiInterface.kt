@@ -2,6 +2,7 @@ package com.tphtwe.foodparadise.api
 
 import com.tphtwe.foodparadise.model.AtoZmodel.FirstLetter
 import com.tphtwe.foodparadise.model.Category
+import com.tphtwe.foodparadise.model.CatogoryFilter.CategoryFilter
 import com.tphtwe.foodparadise.model.Instrction.Instruction
 import com.tphtwe.foodparadise.model.Random
 import retrofit2.Call
@@ -24,6 +25,11 @@ interface ApiInterface {
     fun getDetil(
         @Query("i") id:String
     ):Call<Instruction>
+
+    @GET("filter.php")
+    fun getCat(
+        @Query("c") id: String
+    ):Call<CategoryFilter>
 
 
 }

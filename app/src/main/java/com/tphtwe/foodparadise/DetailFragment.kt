@@ -1,6 +1,7 @@
 package com.tphtwe.foodparadise
 
 import android.content.SharedPreferences
+import android.os.Build
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -13,6 +14,7 @@ import com.squareup.picasso.Picasso
 import com.tphtwe.foodparadise.api.ApiClient
 import com.tphtwe.foodparadise.fragment.Descripion.DesciptionFragment
 import com.tphtwe.foodparadise.model.Instrction.Instruction
+import com.tphtwe.foodparadise.model.Instrction.Meal
 import com.tphtwe.foodparadise.viewmodel.DetailViewMode
 import kotlinx.android.synthetic.main.fragment_desciption.*
 import kotlinx.android.synthetic.main.fragment_detail.*
@@ -23,9 +25,7 @@ import retrofit2.Response
 
 class DetailFragment : Fragment() {
     lateinit var detailViewMode: DetailViewMode
-    private  var shareFile="Share_File"
-    var editor:SharedPreferences.Editor?=null
-    var sharedPreferences:SharedPreferences?=null
+
 
 
 
@@ -47,22 +47,17 @@ class DetailFragment : Fragment() {
         trascation?.add(R.id.detilFrame, desciptionFragment)
         trascation?.commit()
 
-        btnIngre.setOnClickListener{
-            var ingreFragment=IngreFragment()
-            var transaction=activity?.supportFragmentManager?.beginTransaction()
-            transaction?.replace(R.id.detilFrame,ingreFragment)
-            transaction?.commit()
-        }
 
-        btnYoutube.setOnClickListener{
-            var youtubeFragment=YoutubeFragment()
-            var transaction=activity?.supportFragmentManager?.beginTransaction()
-            transaction?.replace(R.id.detilFrame,youtubeFragment)
-            transaction?.commit()
-        }
+
 
         btnRecipe.setOnClickListener {
-            var desciptionFragment = DesciptionFragment()
+            var instruction=instrctionDetil.text
+
+            var desciptionFragment = DesciptionFragment( )
+            var bundle=Bundle()
+            bundle.putString("text",instrctionDetil.text.toString())
+            desciptionFragment.arguments=bundle
+
             val transcation = activity?.supportFragmentManager?.beginTransaction()
             transcation?.replace(R.id.detilFrame, desciptionFragment)
             transcation?.commit()
@@ -80,6 +75,30 @@ class DetailFragment : Fragment() {
                 detilCountry.text=it.meals.get(0).strArea
                 Picasso.get().load(it.meals[0].strMealThumb).into(detilImg)
                 instrctionDetil.text=it.meals[0].strInstructions
+                var youtube=it.meals[0].strYoutube
+                
+
+                btnIngre.setOnClickListener{
+
+                    var ingreFragment=IngreFragment()
+                    var bundle=Bundle()
+                    bundle.putStringArrayList("yy", arrayListOf("77","55"))
+                    var transaction=activity?.supportFragmentManager?.beginTransaction()
+                    transaction?.replace(R.id.detilFrame,ingreFragment)
+                    transaction?.commit()
+                }
+
+                btnYoutube.setOnClickListener{
+
+                    var youtubeFragment=YoutubeFragment()
+                    var bundle=Bundle()
+                    bundle.putString("youtube",youtube)
+                    var transaction=activity?.supportFragmentManager?.beginTransaction()
+                    transaction?.replace(R.id.detilFrame,youtubeFragment)
+                    transaction?.commit()
+                }
+
+
 
 
 
@@ -98,6 +117,9 @@ class DetailFragment : Fragment() {
         var id:String=arguments?.description.toString()
 
         detailViewMode.loadResultDetail(id)
+
+
+
 
     }
 

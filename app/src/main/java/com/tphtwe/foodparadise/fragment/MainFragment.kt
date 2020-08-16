@@ -25,6 +25,7 @@ class MainFragment : Fragment(), CategoryAdapter.ClickListener {
     lateinit var categoryAdapter: CategoryAdapter
 
 
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -97,7 +98,9 @@ class MainFragment : Fragment(), CategoryAdapter.ClickListener {
     }
 
     override fun click(categoryX: CategoryX) {
-        Toast.makeText(context, "Success", Toast.LENGTH_SHORT).show()
+       Toast.makeText(context, categoryX.strCategory, Toast.LENGTH_SHORT).show()
+        var action=MainFragmentDirections.actionMainFragmentToCategoFragment(categoryX.strCategory)
+        findNavController().navigate(action)
     }
 
 
