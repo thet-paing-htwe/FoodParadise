@@ -8,14 +8,15 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+
 import androidx.lifecycle.observe
+
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.squareup.picasso.Picasso
 import com.tphtwe.foodparadise.R
 import com.tphtwe.foodparadise.adapter.CategoryAdapter
 import com.tphtwe.foodparadise.model.CategoryX
-import com.tphtwe.foodparadise.model.Meal
 import com.tphtwe.foodparadise.viewmodel.ViewModelCategory
 import com.tphtwe.foodparadise.viewmodel.ViewModelRandom
 import kotlinx.android.synthetic.main.fragment_main.*
@@ -41,16 +42,18 @@ class MainFragment : Fragment(), CategoryAdapter.ClickListener {
         viewModelRandom=ViewModelProvider(this).get(ViewModelRandom::class.java)
         categoryAdapter = CategoryAdapter()
 
+
         categoryRecycler.apply {
             layoutManager = GridLayoutManager(context, 3)
             adapter = categoryAdapter
         }
+        observeViewModel()
+
         categoryAdapter.setOnClickListener(this)
 
         //Random image click listener
-        randomCard.setOnClickListener {
-            Toast.makeText(context, randomTitle.text.toString(), Toast.LENGTH_SHORT).show()
-        }
+
+
         //letter atoz click Listener
         letterCard.setOnClickListener {
             findNavController().navigate(R.id.action_mainFragment_to_atoZFragment)
@@ -65,7 +68,7 @@ class MainFragment : Fragment(), CategoryAdapter.ClickListener {
         }
 
 
-        observeViewModel()
+
 
     }
 
@@ -79,21 +82,27 @@ class MainFragment : Fragment(), CategoryAdapter.ClickListener {
             viewLifecycleOwner, Observer{
                 Picasso.get().load(it.meals[0].strMealThumb).into(randomImage)
                 randomTitle.text=it.meals[0].strMeal
+                var id =it.meals[0].idMeal
 
+                randomCard.setOnClickListener {
+                    var action=MainFragmentDirections.actionMainFragmentToDetailFragment(id)
+                    findNavController().navigate(action)
+                }
             }
         )
-
     }
 
     override fun onResume() {
         super.onResume()
         viewModelCategory.loadResultCategory()
         viewModelRandom.loadResultRandom()
+
     }
 
     override fun click(categoryX: CategoryX) {
         Toast.makeText(context, "Success", Toast.LENGTH_SHORT).show()
     }
+
 
 
 }

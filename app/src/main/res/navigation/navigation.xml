@@ -5,6 +5,10 @@
     android:id="@+id/navigation"
     app:startDestination="@id/splashFragment">
 
+
+<fragment
+
+
 <fragment
 
         android:id="@+id/splashFragment"
@@ -26,6 +30,7 @@
             android:id="@+id/action_mainFragment_to_atoZFragment"
             app:destination="@id/atoZFragment" />
         <action
+
             android:id="@+id/action_mainFragment_to_countryFragment"
             app:destination="@id/countryFragment" />
         <action
@@ -33,11 +38,17 @@
             app:destination="@id/ingredientFilterFragment" />
     </fragment>
 
+
+            android:id="@+id/action_mainFragment_to_detailFragment"
+            app:destination="@id/detailFragment" />
+    </fragment>
+
     <fragment
         android:id="@+id/atoZFragment"
         android:name="com.tphtwe.foodparadise.AtoZFragment"
         android:label="fragment_ato_z"
         tools:layout="@layout/fragment_ato_z" />
+
     <fragment
         android:id="@+id/countryFragment"
         android:name="com.tphtwe.foodparadise.fragment.CountryFragment"
@@ -47,5 +58,18 @@
         android:id="@+id/ingredientFilterFragment"
         android:name="com.tphtwe.foodparadise.fragment.IngredientFilterFragment"
         android:label="IngredientFilterFragment" />
+
+
+    <fragment
+        android:id="@+id/detailFragment"
+        android:name="com.tphtwe.foodparadise.DetailFragment"
+        android:label="fragment_detail"
+        tools:layout="@layout/fragment_detail" >
+        <argument
+            android:name="description"
+            app:argType="string"
+            android:defaultValue="Hello" />
+    </fragment>
+
 
 </navigation>

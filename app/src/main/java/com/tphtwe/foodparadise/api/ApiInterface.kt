@@ -1,8 +1,11 @@
 package com.tphtwe.foodparadise.api
 
+
 import com.tphtwe.foodparadise.model.Area.Area
+
 import com.tphtwe.foodparadise.model.AtoZmodel.FirstLetter
 import com.tphtwe.foodparadise.model.Category
+import com.tphtwe.foodparadise.model.Instrction.Instruction
 import com.tphtwe.foodparadise.model.Random
 import com.tphtwe.foodparadise.model.country.Country
 import com.tphtwe.foodparadise.model.ingredient.Ingredient
@@ -22,6 +25,7 @@ interface ApiInterface {
     fun getFirstLetter(
         @Query("f")letter:String
     ):Call<FirstLetter>
+
 
     //add country spinner
     @GET("list.php")
@@ -46,6 +50,12 @@ interface ApiInterface {
     fun getMealByIngredient(
         @Query ("i")itemIngredient:String
     ):Call<MealIngredient>
+
+    @GET("lookup.php")
+    fun getDetil(
+        @Query("i") id:String
+    ):Call<Instruction>
+
 
 
 }

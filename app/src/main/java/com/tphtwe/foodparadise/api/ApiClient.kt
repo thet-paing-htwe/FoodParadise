@@ -1,8 +1,11 @@
 package com.tphtwe.foodparadise.api
 
+
 import com.tphtwe.foodparadise.model.Area.Area
+
 import com.tphtwe.foodparadise.model.AtoZmodel.FirstLetter
 import com.tphtwe.foodparadise.model.Category
+import com.tphtwe.foodparadise.model.Instrction.Instruction
 import com.tphtwe.foodparadise.model.Random
 import com.tphtwe.foodparadise.model.country.Country
 import com.tphtwe.foodparadise.model.ingredient.Ingredient
@@ -31,6 +34,7 @@ class ApiClient {
         return apiInterface.getFirstLetter(letter)
     }
 
+
     //add country
     fun getCountryListItems(area:String):Call<Country>{
         return apiInterface.getCountryList(area)
@@ -44,5 +48,12 @@ class ApiClient {
     fun getMealByIngredients(itemIngredient:String):Call<MealIngredient>{
         return apiInterface.getMealByIngredient(itemIngredient)
     }
+
+
+    fun getDetail(id:String):Call<Instruction>{
+        return apiInterface.getDetil(id)
+    }
+
+
 
 }

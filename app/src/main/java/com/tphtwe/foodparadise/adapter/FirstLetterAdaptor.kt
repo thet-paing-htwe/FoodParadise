@@ -5,6 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
 import com.tphtwe.foodparadise.R
+
 import com.tphtwe.foodparadise.model.AtoZmodel.Meal
 import kotlinx.android.synthetic.main.item_a_to_z.view.*
 
@@ -20,10 +21,20 @@ class FirstLetterAdaptor(var firstLetterList:List<Meal> = ArrayList<Meal>()):Rec
         lateinit var meal2:Meal
         fun bindFirstLetter(meal: Meal){
             this.meal2=meal
+
+
+import com.tphtwe.foodparadise.model.AtoZmodel.Meal
+import kotlinx.android.synthetic.main.item_a_to_z.view.*
+
+class FirstLetterAdaptor(var firstLetterList: List<Meal>):RecyclerView.Adapter<FirstLetterAdaptor.FirstLetterViewHolder>() {
+    class FirstLetterViewHolder(itemView: View) :RecyclerView.ViewHolder(itemView){
+        fun bindFirstLetter(meal: Meal){
+
             itemView.firstLetterTxt.text=meal.strMeal
             Picasso.get().load(meal.strMealThumb).placeholder(R.drawable.hhh).into(itemView.firstLetterImg)
 
         }
+
 
         override fun onClick(view: View?) {
             lclickListener2?.click(meal2)
@@ -33,6 +44,8 @@ class FirstLetterAdaptor(var firstLetterList:List<Meal> = ArrayList<Meal>()):Rec
     fun updateMealLetter(firstLetterList2:List<Meal>){
         this.firstLetterList=firstLetterList2
         notifyDataSetChanged()
+
+
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FirstLetterViewHolder {
@@ -47,7 +60,9 @@ class FirstLetterAdaptor(var firstLetterList:List<Meal> = ArrayList<Meal>()):Rec
     override fun onBindViewHolder(holder: FirstLetterViewHolder, position: Int) {
         holder.bindFirstLetter(firstLetterList[position])
     }
+
     interface ClickListener2{
         fun click(meal: Meal)
     }
+
 }
